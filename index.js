@@ -7,8 +7,9 @@ app.use(express.static('public'));
 app.use(express.json());
 
 app.post('/submit', (req, res) => {
-    const data = req.body;
-    res.send(`Received data: ${JSON.stringify(data)}`);
+    const name = req.body;
+    console.log(name);
+    res.send(`Received data: ${JSON.stringify(name)}`);
 });
 
 app.get('/about', (req, res) => {
