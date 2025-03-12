@@ -6,6 +6,16 @@ app.use(express.static('public'));
 
 app.use(express.json());
 
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+});
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+});
+
 app.post('/submit', (req, res) => {
     const name = req.body;
     console.log(name);
