@@ -11,6 +11,14 @@ app.use((req, res, next) => {
     next();
 });
 
+const items = ['Apple', 'Banana', 'Orange'];
+
+app.get('/items', (req, res) => {
+    const newItem = req.body.item;
+    items.push(newItem);
+    res.json(items);
+});
+
 app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Something broke!');
